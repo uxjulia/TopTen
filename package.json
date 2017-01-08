@@ -1,0 +1,21 @@
+{
+  "name": "TopTen",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "react-scripts": "0.8.4"
+  },
+  "dependencies": {
+    "nedb": "^1.8.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "spotify-web-api-node": "^2.3.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
