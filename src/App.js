@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import '../dist/font-awesome-4.7.0/css/font-awesome.min.css';
 import SearchForm from './components/search';
 import TopTenList from './components/TopTen';
-// import update from './immutability-helper';
-
- 
 
 class App extends Component {
     constructor(props){
