@@ -43,6 +43,7 @@ class SearchForm extends Component {
         const handleAdd = this.props.handleAdd;
         const results = this.state.results;
         const show = this.state.show;
+       
         return(
             <div>
                 <form className="form-group">

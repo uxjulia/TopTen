@@ -6,7 +6,7 @@ import TopTenList from './components/TopTen';
 class App extends Component {
     constructor(props){
         super(props);
-        this.state = {topTen: []};
+        this.state = {topTen: [], toggled: true};
     }
 
   duplicateExists = (id) => {
@@ -41,28 +41,41 @@ class App extends Component {
     this.setState({topTen: nTopTen});
   };
 
+
+  handleToggle = ( e ) => {
+      this.setState (( prevState ) => ({ toggled: !prevState.toggled }));
+      e.preventDefault ();
+  };
+
   render() {
     const handleAdd = this.handleAdd;
     const handleRemove = this.removeItem;
     const topTen = this.state.topTen;
+    const handleToggle = this.handleToggle;
+    const toggled = this.state.toggled;
+
     return (
-      <div>
-        <nav className="navbar navbar-default">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <a className="navbar-brand" href="#">
-                Top Ten Playlist
-                </a>
-            </div>
+          <div>
+            <nav className="navbar navbar-default">
+              <div className="container-fluid">
+                <div className="navbar-header">
+                  <a className="navbar-brand" href="#">
+                    Top Ten Playlist
+                    </a>
+                </div>
+              </div>
+            </nav>
+        <div className="container-fluid">
+          <div className="row">
+          <div className="col-md-12">
+              <div className="col-md-6 form-group">
+                  <TopTenList handleToggle={handleToggle} toggled={toggled} remove={handleRemove} data={topTen} />
+              </div>
+              <div className="col-md-6">
+                  <SearchForm handleAdd={handleAdd} />
+              </div>
           </div>
-        </nav>
-        <div className="col-md-12">
-            <div className="col-sm-6 col-md-6 form-group">
-                <TopTenList remove={handleRemove} data={topTen} />
-            </div>
-            <div className="col-md-6 col-sm-6">
-                <SearchForm handleAdd={handleAdd} />
-            </div>
+        </div>
         </div>
         </div>
     );
@@ -70,3 +83,4 @@ class App extends Component {
 }
 
 export default App;
+
