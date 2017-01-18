@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import jQuery from 'jquery';
 import App from './App';
 
 it('renders without crashing', () => {
