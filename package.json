@@ -1,10 +1,11 @@
 {
   "name": "TopTen",
+  "homepage": "http://uxjulia.github.io/TopTen",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "babel-cli": "^6.18.0",
-    "react-scripts": "0.8.4"
+    "react-scripts": "^0.8.5"
   },
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
