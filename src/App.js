@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 // eslint-disable-next-line
+import jquery from 'jquery';
+// eslint-disable-next-line
 import bootstrap from 'bootstrap';
 import './App.css';
 import SearchForm from './components/search';
