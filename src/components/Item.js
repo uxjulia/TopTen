@@ -6,24 +6,10 @@ class Item extends Component{
 		this.props.onClick(obj);
 	};
 	render(){
-		const imgStyle = {
-			maxWidth: "75px"
-		};
-		const padding = {
-		    padding: "0px"
-        };
 		return(
-			<div>
-				<div onClick={this.handleClick} id={this.props.name} className="itemContainer panel panel-default col-sm-12">
-                    <div style={padding} className="panel-body">
-                        <img alt={this.props.name} className="pull-left albumImage" style={imgStyle} id={this.props.name} src={this.props.image}></img>
-                        <strong id={this.props.name}>{this.props.name}</strong><br/>
-                        {this.props.artist}<br/><br/>
-                        Album: {this.props.album}<br/>
-                        <span className="pull-right"><i className="fa fa-plus"></i></span>
-                    </div>
-				</div>
-			</div>
+			  <button onClick={this.handleClick} type="button" className="list-group-item list-group-item-action">
+			    <strong>{this.props.artist}</strong> - {this.props.name}<span></span>
+			  </button>
 		)
 	}
 }

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+// eslint-disable-next-line
+import bootstrap from 'bootstrap';
 import './App.css';
 import SearchForm from './components/search';
 import TopTenList from './components/TopTen';
+import Nav from './components/Nav';
 
 class App extends Component {
     constructor(props){
         super(props);
-        this.state = {topTen: [], toggled: true};
+        this.state = {playlistName: "", topTen: [], toggled: true};
     }
 
   duplicateExists = (id) => {
@@ -47,37 +50,28 @@ class App extends Component {
       e.preventDefault ();
   };
 
+  handleInput = (e) =>{
+    this.setState({playlistName: e.target.value});
+  }
+
   render() {
     const handleAdd = this.handleAdd;
+    const handleInput = this.handleInput;
     const handleRemove = this.removeItem;
     const topTen = this.state.topTen;
     const handleToggle = this.handleToggle;
     const toggled = this.state.toggled;
-
+    const total = this.state.topTen.length;
+    const playlistName = this.state.playlistName;
     return (
+      <div>
+        <Nav onChange={handleInput} total={total} playlistName={playlistName} content={<TopTenList handleToggle={handleToggle} toggled={toggled} remove={handleRemove} data={topTen} />}/>
+        <div className="container content">
           <div>
-            <nav className="navbar navbar-default">
-              <div className="container-fluid">
-                <div className="navbar-header">
-                  <a className="navbar-brand" href="#">
-                    Top Ten Playlist
-                    </a>
-                </div>
-              </div>
-            </nav>
-        <div className="container-fluid">
-          <div className="row">
-          <div className="col-md-12">
-              <div className="col-md-6 form-group">
-                  <TopTenList handleToggle={handleToggle} toggled={toggled} remove={handleRemove} data={topTen} />
-              </div>
-              <div className="col-md-6">
-                  <SearchForm handleAdd={handleAdd} />
-              </div>
+            <SearchForm handleAdd={handleAdd} />
           </div>
         </div>
-        </div>
-        </div>
+      </div>
     );
   }
 }

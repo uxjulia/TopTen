@@ -16,7 +16,7 @@ class Results extends Component {
 			uiRender.push(<Item key={obj.id} onClick={handleAdd} {...props} />);
 		});
 		return(
-			<div>{uiRender}</div>
+			<div className="list-group">{uiRender}</div>
 		)
 	}
 }

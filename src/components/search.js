@@ -15,7 +15,7 @@ class SearchForm extends Component {
     setResults = (result) => {
         this.setState({results: result, show: true});
     };
-
+ 
     getSearch = (search, setResults) => {
         setResults = this.setResults;
         spotifyApi.searchTracks(search)
@@ -45,17 +45,16 @@ class SearchForm extends Component {
         const show = this.state.show;
        
         return(
-            <div>
-                <form className="form-group">
-                    <div className="form-group">
-                        <label htmlFor="search" className="label-control sr-only">Search</label>
-                        <input className="form-control" id="search" value={this.state.search} onChange={handleChange} placeholder="Enter an Artist, Song or Album Name"/>
-                    </div>
-                    <div>
+            <div className="row">
+                <div className="col-md-6">
+                    <form className="form-group">
+                        <div className="form-group">
+                            <input className="form-control" id="search" value={this.state.search} onChange={handleChange} placeholder="Enter an Artist, Song or Album Name"/>
+                        </div>
                         <button onClick={handleSubmit} className="btn btn-primary">Search</button>
-                    </div>
-                </form>
-                {show && <Results handleAdd={handleAdd} data={results} />}
+                      </form>
+                  </div>
+                <div className="col-md-6">{show && <Results handleAdd={handleAdd} data={results} />}</div>
             </div>
         )
     }
