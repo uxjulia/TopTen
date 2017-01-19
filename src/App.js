@@ -14,7 +14,7 @@ class App extends Component {
   duplicateExists = (id) => {
     const topTen = this.state.topTen;
     const songIds = topTen.map((obj) => obj.id);
-    for (var i = songIds.length - 1; i >= 0; i--) {
+    for (let i = songIds.length - 1; i >= 0; i--) {
       if (songIds[i] === id) {
          return true
       }
@@ -28,7 +28,7 @@ class App extends Component {
     }
     const item = results.tracks.items;
     item.forEach(function(obj) {
-      obj.checked = duplicateExists(obj.id) === true ? true : false;
+      obj.checked = duplicateExists (obj.id) === true;
     });
   };
 
@@ -52,7 +52,7 @@ class App extends Component {
     e.preventDefault();
     const nTopTen = this.state.topTen;
     const x = e.target.id;
-    for (var i = nTopTen.length - 1; i >= 0; i--) {
+    for (let i = nTopTen.length - 1; i >= 0; i--) {
       if (nTopTen[i].id === x) {
          nTopTen.splice(i, 1);
       }
@@ -69,7 +69,7 @@ class App extends Component {
 
   handleInput = (e) =>{
     this.setState({playlistName: e.target.value});
-  }
+  };
 
   render() {
     const handleAdd = this.handleAdd;
