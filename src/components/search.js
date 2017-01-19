@@ -10,10 +10,12 @@ const spotifyApi = new SpotifyWebApi({
 class SearchForm extends Component {
     constructor(props){
         super(props);
-        this.state = {search: "", results:[], show: false};
+        this.state = {search: "", show: false};
     }
+    
     setResults = (result) => {
-        this.setState({results: result, show: true});
+        this.props.setResults(result);
+        this.setState({show: true});
     };
  
     getSearch = (search, setResults) => {
@@ -41,8 +43,9 @@ class SearchForm extends Component {
         const handleSubmit = this.handleSubmit;
         const handleChange = this.handleChange;
         const handleAdd = this.props.handleAdd;
-        const results = this.state.results;
+        const results = this.props.results;
         const show = this.state.show;
+        const topTen = this.props.topTen;
        
         return(
             <div className="row">
@@ -54,7 +57,7 @@ class SearchForm extends Component {
                         <button onClick={handleSubmit} className="btn btn-primary">Search</button>
                       </form>
                   </div>
-                <div className="col-md-6">{show && <Results handleAdd={handleAdd} data={results} />}</div>
+                <div className="col-md-6">{show && <Results topTen={topTen} handleAdd={handleAdd} data={results} />}</div>
             </div>
         )
     }

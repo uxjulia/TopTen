@@ -23,8 +23,8 @@ class Nav extends React.Component {
         color: "#6C6C6D"
       },
       toggle: {
-        fontSize: ".9rem",
-        marginTop: "5px"
+        marginTop: "5px",
+        fontSize: "1rem"
       }
     }
     const toggled = this.state.toggled;
@@ -41,7 +41,7 @@ class Nav extends React.Component {
         <div className="collapse navbar-collapse" id="navbarText">
           <ul className="navbar-nav mr-auto">
           <div className="hidden-md-down">
-            <button style={style.toggle} onClick={handleToggle} data-toggle="collapse" data-target="#userPlaylist" className="btn btn-sm align-middle btn-outline-primary" type="button">
+            <button style={style.toggle} onClick={handleToggle} data-toggle="collapse" data-target="#userPlaylist" className="btn align-middle btn-outline-primary" type="button">
              {toggled && <span><i className="fa fa-toggle-on"></i> Hide Playlist</span>}{!toggled && <span><i className="fa fa-toggle-off"></i> Show Playlist</span>}
             </button>
          </div>

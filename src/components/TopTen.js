@@ -8,13 +8,13 @@ class ListItem extends Component {
         };
         const imgStyle = { maxWidth: "50px" };
         return (
-            <li className="panel panel-default">
-                <div style={style.div} className="panel-body">
+            <li className="card">
+                <div style={style.div} className="card-block">
                     <img alt={this.props.name} className="pull-left albumImage" style={imgStyle} id={this.props.name}
                          src={this.props.image}></img>
                     <span id={this.props.artist}><strong>{this.props.artist}</strong></span><br/>
                     <span id={this.props.name}>{this.props.name}</span><br/>
-                    <span><i style={style.icon} id={this.props.id} onClick={this.props.onClick} className="pull-right fa fa-trash" aria-hidden="true"></i></span></div>
+                    <span><i style={style.icon} id={this.props.id} onClick={this.props.onClick} className="fa-pull-right align-middle fa fa-trash" aria-hidden="true"></i></span></div>
             </li>
         )
     }
@@ -35,10 +35,6 @@ class TopTenList extends Component {
         super (props);
         this.state = {playlistName: this.props.playlistName, data: this.props.data};
     }
-    
-    // handleInput = (e) => {
-    //     this.setState({playlistName: e.target.value.toUpperCase()});
-    // };
     
     render () {
         const data = this.state.data;
