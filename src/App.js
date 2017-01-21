@@ -45,15 +45,17 @@ class App extends Component {
       this.toast.MaterialSnackbar.showSnackbar(data);
   }
 
-  handleAdd = (obj) =>{
+  handleAdd = (obj) => {
     const topTen = this.state.topTen;
     const id = obj.id;
     obj.checked = true;
     let duplicateExists = this.duplicateExists;
-    if (topTen.length !== 10 && duplicateExists(id, topTen) !== true) topTen.push(obj);
-    this.setState({topTen: topTen});
-    this.setCheckMark(this.state.searchResults, this.state.topTen);
-    this.showToast(obj.name);
+    if (topTen.length !== 10 && duplicateExists(id, topTen) !== true) {
+      topTen.push(obj);
+      this.showToast(obj.name);
+      this.setState({topTen: topTen});
+      this.setCheckMark(this.state.searchResults, this.state.topTen);
+     }
   };
 
   removeItem = (e) => {
@@ -75,7 +77,7 @@ class App extends Component {
       e.preventDefault ();
   };
 
-  handleInput = (e) =>{
+  handleInput = (e) => {
     this.setState({playlistName: e.target.value});
   };
 
