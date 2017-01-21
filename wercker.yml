@@ -35,4 +35,7 @@ build:
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
 deploy:
-    - npm run deploy
+  steps:
+    - npm-install
+    - npm-test
+    - npm-deploy
