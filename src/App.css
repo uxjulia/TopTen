@@ -8,7 +8,7 @@
 
 main {
   background: url('./assets/images/headphones.jpg') center / cover;
-  opacity: .7;
+  /*opacity: .7;*/
   z-index: 1024;
 }
 
