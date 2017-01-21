@@ -22,7 +22,7 @@ class ListItem extends Component {
     }
 }
 
-function CollapsableDiv ( props ) {
+function Playlist ( props ) {
     return (
         <div>
             <ol type="1" id="sortable">
@@ -49,7 +49,7 @@ class TopTenList extends Component {
         });
         return (
             <div>
-                <CollapsableDiv children={uiRender}/>
+                <Playlist children={uiRender}/>
             </div>
         )
     }
