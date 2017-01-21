@@ -38,4 +38,6 @@ deploy:
   steps:
     - npm-install
     - npm-test
-    - npm-run-deploy
+    - script:
+        name: deploy gh-page
+        code: npm run deploy
