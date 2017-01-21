@@ -2,9 +2,38 @@
   margin-top: 70px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.noPointer {
+  cursor: default;
+}
+
+main {
+  background: url('./assets/images/headphones.jpg') center / cover;
+  opacity: .7;
+  z-index: 1024;
+}
+
+.center-block {
+  display: table-row;
+}
+
+.cp50 {
+  width: 50%;
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0;
+  text-align: center;
+  padding: 0;
+}
+
+.search-bg {
+  color: #fff;
+  height: 176px;
+  background: url('https://static.pexels.com/photos/30222/pexels-photo-30222.jpg') center / cover;
+}
+
+.vinyl-bg {
+  color: #ffff;
+  background: url('./assets/images/vinyl.jpg') center / cover;
 }
 
 div.itemContainer {
@@ -37,38 +66,7 @@ img.albumImage {
   border: 1px solid #000000;
   border-radius: .5;
   margin-right: 5px;
-}
-
- #sortable { 
-  list-style-type: none; 
-  margin: 0; 
-  padding: 0; 
-}
-
-#sortable li { 
-  margin: 0 0px 5px 0px; 
-  padding: 5px; 
-  font-size: 1.0em; 
-  height: 3.5em; 
-}
-
-html > body #sortable li { 
-  height: auto;
-  line-height: 1.0em; 
-}
-
-.ui-state-highlight { 
-  height: 1.5em; 
-  line-height: 100px; 
-  color: yellow;
-}
-
-.ui-state-default {
-  border: 1px solid #c5c5c5;
-  border-radius: .5px;
-  background: #f6f6f6;
-  font-weight: normal;
-  color: #454545;
+  max-height: 50px;
 }
 
 .fa-trash {

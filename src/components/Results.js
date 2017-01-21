@@ -15,8 +15,11 @@ class Results extends Component {
 			const props = {checked: obj.checked, id:obj.id, artist: obj.artists[0].name, name: obj.name, album: obj.album.name, image: obj.album.images[0].url, preview: obj.preview_url};
 			uiRender.push(<Item key={obj.id} onClick={handleAdd} {...props} />);
 		});
+		const style = {
+			width: "100%" 
+		}
 		return(
-			<div className="list-group">{uiRender}</div>
+			<div style={style} className="mdl-card mdl-list">{uiRender}</div>
 		)
 	}
 }

@@ -3,11 +3,12 @@ import './App.css';
 import SearchForm from './components/search';
 import TopTenList from './components/TopTen';
 import Nav from './components/Nav';
+import Results from './components/Results';
 
 class App extends Component {
     constructor(props){
         super(props);
-        this.state = {playlistName: "", searchResults:[], topTen: [], toggled: true};
+        this.state = {playlistName: "", searchResults:[], topTen: [], toggled: true, showResults: false};
     };
 
 
@@ -36,7 +37,13 @@ class App extends Component {
     const topTen = this.state.topTen;
     this.setCheckMark(result, topTen);
     this.setState({searchResults: result});
+    this.setState({showResults: true});
   };
+
+  showToast = (item) => {
+      let data = {message: item + ' was just added to your playlist!'};
+      this.toast.MaterialSnackbar.showSnackbar(data);
+  }
 
   handleAdd = (obj) =>{
     const topTen = this.state.topTen;
@@ -46,6 +53,7 @@ class App extends Component {
     if (topTen.length !== 10 && duplicateExists(id, topTen) !== true) topTen.push(obj);
     this.setState({topTen: topTen});
     this.setCheckMark(this.state.searchResults, this.state.topTen);
+    this.showToast(obj.name);
   };
 
   removeItem = (e) => {
@@ -82,13 +90,50 @@ class App extends Component {
     const playlistName = this.state.playlistName;
     const setResults = this.setResults;
     const results = this.state.searchResults;
+    const showResults = this.state.showResults;
+    const style = {
+      card: {
+        minHeight: "50px",
+        width: "100%"
+      }
+    }
     return (
-      <div>
-        <Nav onChange={handleInput} total={total} playlistName={playlistName} content={<TopTenList handleToggle={handleToggle} toggled={toggled} remove={handleRemove} data={topTen} />}/>
-        <div className="container content">
-          <div>
-            <SearchForm setResults={setResults} handleAdd={handleAdd} results={results} />
+      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header className="mdl-layout__header">
+          <div className="mdl-layout__header-row">
+            <i className="material-icons">headset</i><span className="mdl-layout-title"> Top Ten</span>
+            <div className="mdl-layout-spacer"/>
+                <SearchForm expandable="true" setResults={setResults} handleAdd={handleAdd} results={results} />
           </div>
+        </header>
+        <div className="mdl-layout__drawer">
+          <span className="mdl-layout-title">Playlist</span>
+          <nav className="mdl-navigation">
+            <TopTenList handleToggle={handleToggle} toggled={toggled} remove={handleRemove} data={topTen} />
+          </nav>
+        </div>
+        <main className="mdl-layout__content">
+          <div className="page-content">
+          <div className="mdl-grid">
+            <div className="mdl-cell">
+              <section>
+                <div style={style.card} className="mdl-card mdl-shadow--2dp">
+                  <div className="mdl-card__supporting-text">
+                    <SearchForm setResults={setResults} handleAdd={handleAdd} results={results} />
+                      Search by Artist, Album or Track keyword
+                    </div>
+                  </div>
+                </section>
+                <section>
+                  {showResults && <Results data={results} handleAdd={handleAdd} />}
+                </section>
+              </div>
+            </div>
+          </div>
+        </main>
+        <div id="toast" className="mdl-js-snackbar mdl-snackbar" ref={div => this.toast = div}>
+          <div className="mdl-snackbar__text"></div>
+          <button className="mdl-snackbar__action" type="button"></button>
         </div>
       </div>
     );
