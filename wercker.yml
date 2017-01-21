@@ -34,10 +34,24 @@ build:
         code: |
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
-deploy:
+
+gh-build:
   steps:
-    - npm-install
-    - npm-test
-    - script:
-        name: deploy gh-page
-        code: npm run deploy
+      - script:
+          name: setup node env
+          code: |
+            export NODE_ENV=development
+            
+      - npm-install
+
+gh-pages-deploy:
+  steps:
+      - script:
+          name: setup node env
+          code: |
+            export NODE_ENV=development
+
+      - script:
+          name: build release code
+          code: |
+            npm run deploy
