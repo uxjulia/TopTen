@@ -10,10 +10,9 @@ class Nav extends React.Component {
       this.setState (( prevState ) => ({ toggled: !prevState.toggled }));
   };
 
-  toggleInput = (e) =>{
+  toggleInput = () =>{
     this.setState (( prevState ) => ({ showInput: !prevState.showInput }));
-      // this.setState({ showInput: false});
-  }
+  };
 
   render(){
     const style = {
@@ -26,7 +25,7 @@ class Nav extends React.Component {
         marginTop: "5px",
         fontSize: "1rem"
       }
-    }
+    };
     const toggled = this.state.toggled;
     const handleToggle = this.handleToggle;
     const showInput = this.state.showInput;
@@ -54,7 +53,7 @@ class Nav extends React.Component {
       </nav>
       <div className="collapse" id="userPlaylist">
            <div className="p-4">
-             {!showInput && <h4 style={style} onClick={this.toggleInput}>{playlistName ||  "Playlist" } <i style={style.icon}className="fa fa-pencil-square-o" aria-hidden="true"></i></h4>}
+             {!showInput && <h4 style={style} onClick={this.toggleInput}>{playlistName ||  "Playlist" } <i style={style.icon} className="fa fa-pencil-square-o" aria-hidden="true"></i></h4>}
              {showInput && <input className="form-control" value={playlistName} onChange={this.props.onChange} onBlur={this.toggleInput}/>}
              {this.props.content}
            </div>
