@@ -18,18 +18,27 @@ class Item extends Component{
 			},
 			iconChecked: {
 				color: "#80C1C8"
+			},
+			image: {
+				height: "auto",
+				width: "auto",
+				backgroundColor: "unset",
+				marginRight: "10px"
+			},
+			content: {
+				height: "auto"
 			}
 		};
 		const checked = this.props.checked;
 		return(
-			<li className="mdl-list__item mdl-list__item--three-line">
-				<span className="mdl-list__item-primary-content">
-					<i className="mdl-list__item-avatar"><img className="albumImage" src={this.props.image}></img></i>
-			
-				  <span>{this.props.name}</span>
+			<li className="mdl-list__item mdl-list__item--three-line searchItem">
+				<span style={style.content} className="mdl-list__item-primary-content">
+					<i style={style.image} className="mdl-list__item-avatar"><img className="albumImage" src={this.props.image}></img></i>
 				  <span className="mdl-list__item-text-body">
-					  {this.props.artist}
+				  	<p>{this.props.name}</p>
+					  <p><strong>{this.props.artist}</strong></p>
 				  </span>
+				  
 				</span>
 					<span className="mdl-list__item-secondary-content">
 					  <a onClick={this.handleClick} className="mdl-list__item-secondary-action">
