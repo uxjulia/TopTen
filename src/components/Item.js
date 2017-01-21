@@ -17,7 +17,7 @@ class Item extends Component{
 				color: "#6C6C6C"
 			},
 			iconChecked: {
-				color: "#80C1C8"
+				color: "#5F7D8B"
 			},
 			image: {
 				height: "auto",
