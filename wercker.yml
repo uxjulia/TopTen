@@ -38,4 +38,4 @@ deploy:
   steps:
     - npm-install
     - npm-test
-    - npm-deploy
+    - npm-run-deploy
